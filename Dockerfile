@@ -19,6 +19,9 @@ WORKDIR /usr/src/app
 
 # restore node_modules for front-end
 COPY package.json yarn.lock tsconfig.json ./
+
+
+
 RUN SKIP_POSTINSTALL=1 yarn install
 
 # prepare backend by copying scripts/configs and installing node modules
@@ -26,7 +29,11 @@ RUN SKIP_POSTINSTALL=1 yarn install
 COPY configs ./configs
 COPY scripts ./scripts
 COPY redisinsight ./redisinsight
+
 RUN yarn --cwd redisinsight/api install
+
+#art
+#RUN yarn add ws@8.17.1
 
 # build the frontend, static assets, and backend api
 RUN yarn build:ui
@@ -39,7 +46,12 @@ RUN yarn --cwd ./redisinsight/api install --production
 COPY ./redisinsight/api/.yarnclean.prod ./redisinsight/api/.yarnclean
 RUN yarn --cwd ./redisinsight/api autoclean --force
 
-FROM 20.14-alpine
+
+
+
+
+
+FROM node:20.14-alpine
 
 # runtime args and environment variables
 ARG NODE_ENV=production
@@ -74,6 +86,10 @@ EXPOSE 5540
 
 # don't run the node process as root
 USER node
+
+
+
+
 
 # serve the application 🚀
 ENTRYPOINT ["./docker-entry.sh", "node", "redisinsight/api/dist/src/main"]
