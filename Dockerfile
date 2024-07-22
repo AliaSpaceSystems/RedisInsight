@@ -7,6 +7,7 @@
 # while still keeping the final image small.
 
 FROM node:20.14-alpine as build
+#FROM node:22.5.1-alpine3.20 as build
 
 # update apk repository and install build dependencies
 RUN apk update && apk add --no-cache --virtual .gyp \
@@ -48,12 +49,10 @@ RUN yarn --cwd ./redisinsight/api autoclean --force
 
 
 
-
-
-
 FROM node:20.14-alpine
+#FROM node:22.5.1-alpine3.20
 
-# runtime args and environment variables
+# runtime args and enevironment variables
 ARG NODE_ENV=production
 ARG RI_SEGMENT_WRITE_KEY
 ENV RI_SEGMENT_WRITE_KEY=${RI_SEGMENT_WRITE_KEY}

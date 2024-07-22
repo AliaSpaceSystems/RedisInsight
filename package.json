@@ -209,8 +209,7 @@
     "webpack-dev-server": "^5.0.4",
     "webpack-merge": "^5.10.0",
     "whatwg-fetch": "^3.6.2",
-    "yarn-deduplicate": "^3.1.0",
-	"ws": "^8.17.1"
+    "yarn-deduplicate": "^3.1.0"
   },
   "dependencies": {
     "@elastic/datemath": "^5.0.3",
@@ -271,8 +270,7 @@
     "unified": "^10.1.1",
     "unist-util-visit": "^4.1.0",
     "url-parse": "^1.5.10",
-    "uuid": "^8.3.2",
-	"ws": "^8.17.1"
+    "uuid": "^8.3.2"
   },
   "devEngines": {
     "node": ">=16.x",
