@@ -13,6 +13,8 @@ FROM node:20.14-alpine as build
 RUN apk update && apk add --no-cache --virtual .gyp \
         python3 \
         make \
+        libssl3=3.3.2-r0 \
+        libcrypto3=3.3.2-r0 \
         g++
 
 # set workdir
